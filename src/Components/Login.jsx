@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import AddUser from './AddUser'
 
 const Login = () => {
     const [inputField,setInputField]=useState(
         {username:"",password:""}
     )
+    
+    const navigate=useNavigate()
 
     const inputHandler=(event)=>{
         setInputField({...inputField,[event.target.name]:event.target.value})
@@ -11,6 +15,11 @@ const Login = () => {
 
     const readValue=()=>{
         console.log(inputField)
+        if (inputField.username=="admin" && inputField.password=="12345") {
+            navigate("/a")
+        } else {
+            alert("Invalid Credentials")
+        }
     }
   return (
     <div>
